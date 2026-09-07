@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Use the dedicated VSCodium module for proper paths and settings
@@ -18,6 +18,34 @@
 
       # Editor font configuration including Nerd Font Mono
       userSettings = {
+        "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+        "editor.fontSize" = 14;
+      };
+    };
+
+    # Dedicated Java development profile configuration
+    profiles.java = {
+      # Essential extensions for Java development and building
+      extensions = with pkgs.vscode-extensions; [
+        # Comprehensive Java language support, refactoring, and navigation
+        redhat.java
+        
+        # Debugger support for Java applications
+        vscjava.vscode-java-debug
+        
+        # Test Runner for Java to execute JUnit and TestNG tests
+        vscjava.vscode-java-test
+        
+        # Maven project management and build integration
+        vscjava.vscode-maven
+        
+        # Project Manager for Java to easily manage workspace folders
+        vscjava.vscode-java-dependency
+      ];
+
+      # Specific editor settings optimized for Java development
+      userSettings = {
+        "java.configuration.updateBuildConfiguration" = "automatic";
         "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
         "editor.fontSize" = 14;
       };

@@ -15,6 +15,7 @@
   imports = [
     ../../modules/programs/cli
     ../../modules/programs/apps
+    ../../modules/programs/dev
     ./gnome
   ];
 }
